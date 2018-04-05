@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Ankieta</title>
+    <style>
+      .odstep{
+        margin-right: 15px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+		<h1>Ankieta</h1>
+      <div class="jumbotron">
+        <form class="form-horizontal">
+          <div class="form-group">
+            <p>Płeć:</p>
+            <div class="radio">
+              <label><input class="odstep" type="radio" name="plec">Kobieta</label>
+            </div>
+            <div class="radio">
+               <label><input class="odstep" type="radio" name="plec">Mężczyzna</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Wiek</label>
+            <input class="form-control" type="text">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Waga (kg)</label>
+            <input class="form-control" type="text">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Wzrost (cm)</label>
+            <input class="form-control" type="text">
+          </div>
+          <div class="form-group">
+            <p>Jak oceniasz swój sposób odżywiania?</p>
+            <div class="radio">
+              <label><input class="odstep" type="radio" name="dieta">Bardzo dobrze</label>
+            </div>
+            <div class="radio">
+              <label><input class="odstep" type="radio" name="dieta">Poprawnie</label>
+          </div>
+          <div class="radio">
+            <label><input class="odstep" type="radio" name="dieta">Mogłoby być lepiej</label>
+          </div>
+          <div class="radio">
+            <label><input class="odstep" type="radio" name="dieta">Źle</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <p>Jak często uprawiasz sport? <p>
+          <div class="radio">
+            <label><input class="odstep" type="radio" name="sport">Codziennie</label>
+          </div>
+          <div class="radio">
+            <label><input class="odstep" type="radio" name="sport">3-5 razy w tygodniu</label>
+          </div>
+          <div class="radio">
+            <label><input class="odstep" type="radio" name="sport">2-3 razy w tygodniu</label>
+          </div>
+          <div class="radio">
+            <label><input class="odstep" type="radio" name="sport">Sporadycznie</label>
+          </div>
+          <div class="radio">
+            <label><input class="odstep" type="radio" name="sport">Nigdy, nie mam czasu na trening</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <p>Czy prowadzisz stresujący tryb życia</p>
+          <div class="radio">
+            <label><input class="odstep" type="radio" name="stes">Zdecydowanie tak</label>
+          </div>
+          <div class="radio">
+            <label><input class="odstep" type="radio" name="stes">Raczej tak</label>
+          </div>
+          <div class="radio">
+            <label><input class="odstep" type="radio" name="stes">Raczej nie</label>
+          </div>
+          <div class="radio">
+            <label><input class="odstep" type="radio" name="stes">Zdecydowanie nie</label>
+          </div>
+        </div>
+		<div class="form-group">
+			<p>Czy palisz papierosy nałogowo?</p>
+			<div class="radio">
+            <label><input class="odstep" type="radio" name="papierosy">Tak</label>
+          </div>
+          <div class="radio">
+            <label><input class="odstep" type="radio" name="papierosy">Nie</label>
+          </div>
+		</div>
+		<div class="form-group">
+			<p>Czy pijesz alkogol?</p>
+			<div class="radio">
+				<label><input class="odstep" type="radio" name="alkohol">Zdecydowanie nie</label>
+			</div>
+				<label><input class="odstep" type="radio" name="alkohol">Piję tylko w wyjątkowych sytuacjach</label>
+			<div class="radio">
+				<label><input class="odstep" type="radio" name="alkohol">Piję zawsze kiedy mam okazję</label>
+			</div>
+			<div class="radio">
+				<label><input class="odstep" type="radio" name="alkohol">Piję nałogowo</label>
+			</div>
+		</div>
+		<div class="form-group">
+			<p>Czy korzystasz z innych używek?</p>
+			<div class="radio">
+				<label><input class="odstep" type="radio" name="uzywki">Tak</label>
+			</div>
+			<div class="radio">
+				<label><input class="odstep" type="radio" name="uzywki">Nie</label>
+			</div>
+		</div>
+        </form>
+      </div>
+	   <button type="button" class="btn btn-primary btn-lg" onclick="drugaStrona()">Dalej</button>
+    </div>
+
+	<script>
+      function drugaStrona() {
+		href="ankietaStrona2.html";
+      }
+    </script>
+  </body>
+</html>

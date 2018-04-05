@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>Ankieta</title>
+	<style>
+      .odstep{
+        margin-right: 15px;
+      }
+
+    </style>
+</head>
+<body>
+	<div class="container">
+		<h1>Ankieta</h1>
+      <div class="jumbotron">
+        <form class="form-horizontal">
+			<div class="form-group">
+				<p>Czy masz problemy z układem krążeniowym</p>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="krazenie">Tak</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="krazenie">Nie</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<p>Czy w Twojej rodzinie ma ktoś problemy z układem krążeniowym</p>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="krazenieRodzina">Tak</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="krazenieRodzina">Nie</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<p>Czy przeszedłeś chorobę nowotworową?</p>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="nowotwor">Tak</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="nowotwor">Nie</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<p>Czy ktos z rodziny przeszedł chorobę nowotworową?</p>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="nowotworrodzina">Tak</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="nowotworrodzina">Nie</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<p>Czy byłeś chory na jedną z tych chorób: ....?</p>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="jednaZchorob">Tak</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="jednaZchorob">Nie</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<p>Czy w rodzinie ktoś chorował na Alzheimera?</p>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="alzheimer">Tak</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="alzheimer">Nie</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<p>Czy doznałeś kiedyś urazu głowy?</p>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="urazGlowy">Tak</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="urazGlowy">Nie</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<p>Wykształcenie</p>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="wyksztalcenie">podstawowe nieukończone i bez wykształcenia</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="wyksztalcenie">podstawowe ukończone</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="wyksztalcenie">zasadnicze zawodowe</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="wyksztalcenie">średnie zawodowe</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="wyksztalcenie">średnie ogólnokształcące</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="wyksztalcenie">policealne</label>
+				</div>
+				<div class="radio">
+					<label><input class="odstep" type="radio" name="wyksztalcenie">wyższe</label>
+				</div>
+			</div>
+		</form>
+	  </div>
+	   <button type="button" class="btn btn-primary btn-lg" onclick="wyslij()">Wyślij</button>
+	</div>
+	</div>
+	<script>
+      function wyslij() {
+		alert("Dziękujemy za poświęcony czas i wypełnienie ankiety!");
+		}
+    </script>
+</body>
+</html>
