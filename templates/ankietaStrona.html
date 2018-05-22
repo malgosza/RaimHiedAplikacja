@@ -1,0 +1,42 @@
+{% extends 'baza.html' %}
+{% block body %}
+    <style>
+      .odstep{
+        margin-right: 15px;
+        }
+
+      .wezszy{
+          width: 75%;
+          margin-left: 14%;
+      }
+
+    </style>
+
+<div class="container">
+     <div class="jumbotron wezszy" >
+        <form class="form-horizontal">
+            {% for p in pytania %}
+            <div class="form-group">
+                <h1 style="font-size:185%;"> {{p.ans}} </h1>
+
+                {% if  not p.odp %}
+                    <input class="form-control" name="{{p.ans}}" type="text">
+                {% else %}
+                    {% for o in p.odp %}
+                         <div class="radio">
+                             <label><input class="odstep" type="radio" name="{{p.ans}}">{{o}}</label>
+                         </div>
+                     {%endfor%}
+                {% endif %}
+
+            <hr>
+            </div>
+             {%endfor%}
+        </form>
+     </div>
+</div>
+
+
+
+
+{%endblock%}
