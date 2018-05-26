@@ -1,9 +1,10 @@
 import sqlite3
 # baza.db
-baza=sqlite3.connect(":memory:")
+baza=sqlite3.connect('baza.db')
 baza.row_factory=sqlite3.Row
 c=baza.cursor()
 
+c.execute('DROP TABLE IF EXISTS pytania')
 c.execute("CREATE TABLE pytania(id integer primary key,trescPytania varchar(100))")
 c.execute("INSERT INTO pytania(trescPytania) VALUES('Płeć')")
 c.execute("INSERT INTO pytania(trescPytania) VALUES('Wiek')")
@@ -25,7 +26,7 @@ c.execute("INSERT INTO pytania(trescPytania) VALUES('Wykształcenie')")
 
 
 
-
+c.execute('DROP TABLE IF EXISTS odpowiedzi')
 c.execute("CREATE TABLE odpowiedzi(id integer primary key, idPytania integer, trescOdpowiedzi varchar(30) )")
 c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(1,'Kobieta')")
 c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(1,'Mężczyzna')")
@@ -83,16 +84,8 @@ c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(17,'średnie
 c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(17,'policealne')")
 c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(17,'wyższe')")
 
-# baza.commit()
-# baza.close()
-# c.execute("SELECT * FROM pytania LEFT JOIN odpowiedzi ON pytania.id=odpowiedzi.idPytania ")
-# wynik=c.fetchall()
 
-# for x in wynik:
-#     print(dict(x))
+baza.commit()
+c.close()
+baza.close()
 
-c.execute("SELECT * FROM odpowiedzi WHERE odpowiedzi.idPytania=17")
-wynik=c.fetchall()
-
-for x in wynik:
-    print(dict(x))
