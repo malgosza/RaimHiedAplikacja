@@ -1,11 +1,11 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask import render_template
 
 aplikacja=Flask(__name__)
 
 @aplikacja.route("/")
 def stronaStartowa():
-    pytanie1={'ans':"Płeć",'odp':["Kobieta","Mężczyzna"]}
+    pytanie1={'ans':"Plec",'odp':["Kobieta","Mężczyzna"]}
     pytanie2={'ans':"Wiek",'odp':[]}
     pytanie3={'ans':"Waga[kg]",'odp':[]}
     pytanie4={'ans':"Wzrost[cm]",'odp':[]}
@@ -36,13 +36,21 @@ def stronaStartowa():
     pytanie17={'ans': "Wykształcenie",
                 'odp': ["podstawowe nieukończone i bez wykształcenia","podstawowe ukończone","zasadnicze zawodowe","średnie zawodowe",
                         "średnie ogólnokształcące","policealne","wyższe" ]}
-    pytania=[pytanie1,pytanie2,pytanie3,pytanie4,pytanie5,pytanie6,
+    pytania=[pytanie1,pytanie2,pytanie3,pytanie4,
+             pytanie5,pytanie6,
              pytanie7,pytanie8,pytanie9,pytanie10,pytanie11,
              pytanie12, pytanie13, pytanie14, pytanie15, pytanie16, pytanie17]
 
     return render_template('ankietaStrona.html',pytania=pytania)
 
+@aplikacja.route("/wyslijDane", methods=['POST'])
+def wyslijDane():
+    r = request.json
 
+    
+
+    zwrotka = {'result': True}
+    return jsonify(zwrotka)
 
 if __name__ == '__main__':
     aplikacja.run(debug=True)

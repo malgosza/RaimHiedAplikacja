@@ -1,10 +1,14 @@
 import sqlite3
-
+# baza.db
 baza=sqlite3.connect(":memory:")
-c=baza.execute()
+baza.row_factory=sqlite3.Row
+c=baza.cursor()
 
 c.execute("CREATE TABLE pytania(id integer primary key,trescPytania varchar(100))")
-c.execute("INSERT INTO pytanie(trescPytania) VALUES('Płeć')")
+c.execute("INSERT INTO pytania(trescPytania) VALUES('Płeć')")
+c.execute("INSERT INTO pytania(trescPytania) VALUES('Wiek')")
+c.execute("INSERT INTO pytania(trescPytania) VALUES('Waga')")
+c.execute("INSERT INTO pytania(trescPytania) VALUES('Wzrost')")
 c.execute("INSERT INTO pytania(trescPytania) VALUES('Jak oceniasz swój sposób odżywiania?')")
 c.execute("INSERT INTO pytania(trescPytania) VALUES('Jak często uprawiasz sport?')")
 c.execute("INSERT INTO pytania(trescPytania) VALUES('Czy prowadzisz stresujący tryb życia')")
@@ -19,48 +23,76 @@ c.execute("INSERT INTO pytania(trescPytania) VALUES('Czy w rodzinie bywały przy
 c.execute("INSERT INTO pytania(trescPytania) VALUES('Czy doznałeś kiedyś urazu głowy?')")
 c.execute("INSERT INTO pytania(trescPytania) VALUES('Wykształcenie')")
 
-c.execute("CREATE TABLE odpowiedzi(id integer primary key, trescOdpowiedzi varchar(30) )")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Kobieta')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Mężczyzna')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Bardzo dobrze')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Poprawnie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Mogłoby być lepiej')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Źle')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Codziennie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('3-5 razy w tygodniu')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('2-3 razy w tygodniu')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Sporadycznie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Nigdy, nie mam czasu na trening')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Zdecydowanie tak')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Raczej tak')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Raczej nie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Zdecydowanie nie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Tak')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Nie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Zdecydowanie nie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Piję tylko w wyjątkowych sytuacjach')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Piję zawsze kiedy mam okazję')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Piję nałogowo')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Tak')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Nie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Tak')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Nie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Tak')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Nie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Tak')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Nie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Tak')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Nie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Tak')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Nie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Tak')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('Nie')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('podstawowe nieukończone i bez wykształcenia')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('podstawowe ukończone')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('zasadnicze zawodowe')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('średnie zawodowe')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('średnie ogólnokształcące')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('policealne')")
-c.execute("INSERT INTO odpowiedzi(trescOdpowiedzi) VALUES('wyższe')")
 
-c.execute("CREATE TABLE relacja_pytanie_odpowiedz(id integer primary key,)")
+
+
+c.execute("CREATE TABLE odpowiedzi(id integer primary key, idPytania integer, trescOdpowiedzi varchar(30) )")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(1,'Kobieta')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(1,'Mężczyzna')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(5,'Bardzo dobrze')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(5,'Poprawnie')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(5,'Mogłoby być lepiej')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(5,'Źle')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(6,'Codziennie')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(6,'3-5 razy w tygodniu')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(6,'2-3 razy w tygodniu')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(6,'Sporadycznie')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(6,'Nigdy, nie mam czasu na trening')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(7,'Zdecydowanie tak')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(7,'Raczej tak')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(7,'Raczej nie')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(7,'Zdecydowanie nie')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(8,'Tak')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(8,'Nie')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(9,'Zdecydowanie nie')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(9,'Piję tylko w wyjątkowych sytuacjach')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(9,'Piję zawsze kiedy mam okazję')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(9,'Piję nałogowo')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(10,'Tak')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(10,'Nie')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(11,'Tak')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(11,'Nie')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(12,'Tak')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(12,'Nie')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(13,'Tak')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(13,'Nie')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(14,'Tak')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(14,'Nie')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(15,'Tak')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(15,'Nie')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(16,'Tak')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(16,'Nie')")
+
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(17,'podstawowe nieukończone i bez wykształcenia')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(17,'podstawowe ukończone')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(17,'zasadnicze zawodowe')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(17,'średnie zawodowe')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(17,'średnie ogólnokształcące')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(17,'policealne')")
+c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi) VALUES(17,'wyższe')")
+
+# baza.commit()
+# baza.close()
+# c.execute("SELECT * FROM pytania LEFT JOIN odpowiedzi ON pytania.id=odpowiedzi.idPytania ")
+# wynik=c.fetchall()
+
+# for x in wynik:
+#     print(dict(x))
+
+c.execute("SELECT * FROM odpowiedzi WHERE odpowiedzi.idPytania=17")
+wynik=c.fetchall()
+
+for x in wynik:
+    print(dict(x))

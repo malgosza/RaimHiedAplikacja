@@ -14,7 +14,7 @@
 
 <div class="container">
      <div class="jumbotron wezszy" >
-        <form class="form-horizontal">
+        <form id="ankieta" class="form-horizontal">
             {% for p in pytania %}
             <div class="form-group">
                 <h1 style="font-size:185%;"> {{p.ans}} </h1>
@@ -32,10 +32,11 @@
             <hr>
             </div>
              {%endfor%}
+            <button type="button" class="btn btn-primary" onclick="wyslij()">Wyślj</button>
         </form>
+
      </div>
 </div>
-
 
 
 
