@@ -2,7 +2,7 @@ function wyslij(){
 //    var opcja = $('input[name=Plec]:checked')[0].labels[0].innerText;
 //    var opcja1=$('input[name="Jak oceniasz swój sposób odżywiania?"]:checked')[0].labels[0].innerText;
 
-    var pytanie=$('#ankieta')[0];
+   var pytanie=$('#ankieta')[0];
    var dane={};
 
     for(var i=0; i<pytanie.length;i++){
@@ -19,6 +19,7 @@ function wyslij(){
             dane[p]=zaznaczonaOdp;
         }
     }
+
      console.log(dane);
 //    $.ajax({
 //                url: "/wyslijDane",

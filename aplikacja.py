@@ -32,17 +32,31 @@ def stronaStartowa():
                 doDodania['odp'].append(odpoSl['trescOdpowiedzi'])
             pytania.append(doDodania)
 
-
-        return render_template('ankietaStrona.html',pytania=pytania)
+        return render_template('ankietaStrona.html',listapytan=pytania)
 
 @aplikacja.route("/wyslijDane", methods=['POST'])
 def wyslijDane():
-    r = request.json
+    r = request.json #zebrane odpowiedzi
+    result=0
+    with aplikacja.app_context():
+        db = get_db()
+        c=db.cursor()
+        for i in r:
+            # print(i)
+            # print(r[i])
+            c.execute("SELECT * FROM pytania JOIN odpowiedzi ON pytania.id=odpowiedzi.idPytania WHERE pytania.trescPytania='"+i+"' AND odpowiedzi.trescOdpowiedzi='"+r[i]+"'")
+            x=c.fetchone()
+            # print(dict(x))
+            result+=int(x['wagaOdpowiedzi'])
+        print(result)
+        c.execute("SELECT nazwaChoroby FROM choroby WHERE gornaGranica <"+str(result)+" AND dolnaGranica >"+str(result))
+        nazwaChoroby=dict(c.fetchone())['nazwaChoroby']
+        print(nazwaChoroby)
+    # zwrotka = {'result': True}
+    # return jsonify(zwrotka)
+    return render_template('diagnoza.html',choroba=nazwaChoroby)
 
-    
 
-    zwrotka = {'result': True}
-    return jsonify(zwrotka)
 
 if __name__ == '__main__':
     aplikacja.run(debug=True)
