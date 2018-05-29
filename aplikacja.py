@@ -36,7 +36,9 @@ def stronaStartowa():
 
 @aplikacja.route("/wyslijDane", methods=['POST'])
 def wyslijDane():
-    r = request.json #zebrane odpowiedzi
+    r = request.form # zebranie danych z ankiety
+
+
     result=0
     with aplikacja.app_context():
         db = get_db()
@@ -48,14 +50,24 @@ def wyslijDane():
             x=c.fetchone()
             # print(dict(x))
             result+=int(x['wagaOdpowiedzi'])
-        print(result)
-        c.execute("SELECT nazwaChoroby FROM choroby WHERE gornaGranica <"+str(result)+" AND dolnaGranica >"+str(result))
-        nazwaChoroby=dict(c.fetchone())['nazwaChoroby']
-        print(nazwaChoroby)
-    # zwrotka = {'result': True}
-    # return jsonify(zwrotka)
-    return render_template('diagnoza.html',choroba=nazwaChoroby)
+        # print(result)
+        if(result==0):
+            return ("Nie wypelniles ankiety")
+        else:
+            c.execute(
+                "SELECT nazwaChoroby FROM choroby WHERE gornaGranica <" + str(result) + " AND dolnaGranica >" + str(
+                    result))
+            nazwaChoroby = dict(c.fetchone())['nazwaChoroby']
+            print(nazwaChoroby)
 
+            c.execute("SELECT zalecenia FROM choroby WHERE gornaGranica <" + str(result) + " AND dolnaGranica >" + str(
+                result))
+            notatka = dict(c.fetchone())['zalecenia']
+            print(notatka)
+            # zwrotka = {'result': True}
+            # return jsonify(zwrotka)
+
+        return render_template('diagnoza.html', choroba=nazwaChoroby, zalecenia=notatka)
 
 
 if __name__ == '__main__':

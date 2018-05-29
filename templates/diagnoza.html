@@ -1,11 +1,18 @@
 {% extends 'baza.html' %}
 {% block body %}
+<style>
+    .wezszy{
+          width: 75%;
+          margin-left: 14%;
+      }
+</style>
 <div class="container">
-    <div class="jumbotron">
-        <form id="diagnoza" class="form-horizontal">
-            <h1>{{choroba}}</h1>
-        </form>
-    </div>
+     <div class="jumbotron wezszy" >
+         <p>Według ankiety jestes w grupie ryzyka wystąpienia schorzenia :</p>
+         <h1>{{choroba}}</h1>
+         <p>{{zalecenia}}</p>
+      </div>
 </div>
+
 
 {%endblock%}

@@ -85,17 +85,24 @@ c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi,wagaOdpowiedzi) VALU
 c.execute("INSERT INTO odpowiedzi(idPytania,trescOdpowiedzi,wagaOdpowiedzi) VALUES(14,'wyższe',1)")
 
 c.execute('DROP TABLE IF EXISTS choroby')
-c.execute('CREATE TABLE choroby(id integer primary key, nazwaChoroby varchar(20), gornaGranica integer, dolnaGranica integer)')
-c.execute("INSERT INTO choroby(nazwaChoroby, gornaGranica, dolnaGranica) VALUES('zawal',10,30 )")
-c.execute("INSERT INTO choroby(nazwaChoroby, gornaGranica, dolnaGranica) VALUES('choroba ukladu krazenia',31,50 )")
-c.execute("INSERT INTO choroby(nazwaChoroby, gornaGranica, dolnaGranica) VALUES('Alzheimer',51,75)")
-c.execute("INSERT INTO choroby(nazwaChoroby, gornaGranica, dolnaGranica) VALUES('Jestes zdrowy',76,200)")
+c.execute("CREATE TABLE choroby(id integer primary key, nazwaChoroby varchar(30), gornaGranica integer, dolnaGranica integer, zalecenia varchar(70))")
+c.execute("INSERT INTO choroby(nazwaChoroby, gornaGranica, dolnaGranica, zalecenia) VALUES('Nie wypełniłeś ankiety :(',0 , 10, 'Nie możemy Ci pomóc zdiagnozować schorzenia')")
+c.execute("INSERT INTO choroby(nazwaChoroby, gornaGranica, dolnaGranica, zalecenia) VALUES('Zawał',10,20,'Warto zwrócić większą uwagę na dietę, więcej się ruszać i mniej stresować')")
+c.execute("INSERT INTO choroby(nazwaChoroby, gornaGranica, dolnaGranica, zalecenia) VALUES('Choroba ukladu krazenia',21,40,'Więcej się ruszaj i pamiętaj, że odpowiednia dieta to podstawa')")
+c.execute("INSERT INTO choroby(nazwaChoroby, gornaGranica, dolnaGranica, zalecenia) VALUES('Alzheimer',41,65,'Jesteś w grupie zagrożenia, ale pamiętaj, że jeszcze wszystko można zmienić! Bądź aktywny! Rozwijaj swoje hobby, wicz dużó na świeżym powietrzu')")
+c.execute("INSERT INTO choroby(nazwaChoroby, gornaGranica, dolnaGranica, zalecenia) VALUES('Jestes zdrowy',66,200,'Gratulacje! Jesteś okazem zdrowia! Warto jednak pamiętać, że wszystko, co robimy wpływa na nasze zdrowie ')")
 
 # c.execute("SELECT * FROM pytania JOIN odpowiedzi ON pytania.id=odpowiedzi.idPytania WHERE pytania.trescPytania='Płeć' AND odpowiedzi.trescOdpowiedzi='Kobieta'")
 # result=32
+# c.execute("SELECT zalecenia FROM choroby WHERE choroby.gornaGranica<32 AND choroby.dolnaGranica>32")
+#
+# x=dict(c.fetchone())['zalecenia']
+# print(x)
+#
 # c.execute("SELECT nazwaChoroby FROM choroby WHERE choroby.gornaGranica<32 AND choroby.dolnaGranica>32")
-# x=c.fetchone()
-# print(dict(x))
+# y=dict(c.fetchone())['nazwaChoroby']
+# print(y)
+
 baza.commit()
 c.close()
 baza.close()

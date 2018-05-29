@@ -4,37 +4,40 @@
       .odstep{
         margin-right: 15px;
         }
-
       .wezszy{
           width: 75%;
           margin-left: 14%;
       }
-
     </style>
 
 <div class="container">
      <div class="jumbotron wezszy" >
-        <form id="ankieta" class="form-horizontal">
-            {% for p in listapytan %}
-            <div class="form-group">
-                <h1 style="font-size:185%;"> {{p.ans}} </h1>
+         <form action="/wyslijDane" method="post">
+            <form id="ankieta" class="form-horizontal">
+                {% for p in listapytan %}
+                <div class="form-group">
+                    <h1 style="font-size:185%;"> {{p.ans}} </h1>
 
-                {% if  not p.odp %}
-                    <input class="form-control" name="{{p.ans}}" type="text">
-                {% else %}
-                    {% for o in p.odp %}
-                         <div class="radio">
-                             <label><input class="odstep" type="radio" name="{{p.ans}}">{{o}}</label>
-                         </div>
-                     {%endfor%}
-                {% endif %}
-
-            <hr>
-            </div>
-             {%endfor%}
-            <button type="button" class="btn btn-primary" onclick="wyslij()">Wyślj</button>
-        </form>
-
+                    {% if  not p.odp %}
+                        <input class="form-control" name="{{p.ans}}" type="text">
+                    {% else %}
+                        {% for o in p.odp %}
+                             <div class="radio">
+                                  <input class="odstep" type="radio" name="{{p.ans}}" id="{{o}}" value="{{o}}">
+                                 <label for="{{o}}">{{o}}</label>
+                                 <!--<label>-->
+                                     <!--<input class="odstep" type="radio" name="{{p.ans}}" id={{o}}>-->
+                                     <!--{{o}}-->
+                                 <!--</label>-->
+                             </div>
+                         {%endfor%}
+                    {% endif %}
+                <hr>
+                </div>
+                 {%endfor%}
+                <button class="btn btn-primary">Wyślj</button>
+             </form>
+         </form>
      </div>
 </div>
 

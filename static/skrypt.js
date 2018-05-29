@@ -37,10 +37,10 @@ function wyslij(){
     xhr.open("POST", '/wyslijDane', false);
     xhr.setRequestHeader("Content-type", "application/json");
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
+        if (xhr.readyState === 4 && xhr.status == 200) {
             // var json = JSON.parse(xhr.responseText);
             // console.log("zwrotka: "+json.dane);
-            callback(xhr.status);
+//            callback(xhr.status);
         }
     };
 
