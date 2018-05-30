@@ -38,36 +38,31 @@ def stronaStartowa():
 def wyslijDane():
     r = request.form # zebranie danych z ankiety
 
-
-    result=0
+    result = 0
     with aplikacja.app_context():
         db = get_db()
-        c=db.cursor()
-        for i in r:
-            # print(i)
-            # print(r[i])
-            c.execute("SELECT * FROM pytania JOIN odpowiedzi ON pytania.id=odpowiedzi.idPytania WHERE pytania.trescPytania='"+i+"' AND odpowiedzi.trescOdpowiedzi='"+r[i]+"'")
-            x=c.fetchone()
-            # print(dict(x))
-            result+=int(x['wagaOdpowiedzi'])
+    c = db.cursor()
+    for i in r:
+        # print(i)
+        # print(r[i])
+        c.execute("SELECT * FROM pytania JOIN odpowiedzi ON pytania.id=odpowiedzi.idPytania WHERE pytania.trescPytania='" + i + "' AND odpowiedzi.trescOdpowiedzi='" +
+            r[i] + "'")
+        x = c.fetchone()
+        # print(dict(x))
+        result += int(x['wagaOdpowiedzi'])
         # print(result)
-        if(result==0):
-            return ("Nie wypelniles ankiety")
-        else:
-            c.execute(
-                "SELECT nazwaChoroby FROM choroby WHERE gornaGranica <" + str(result) + " AND dolnaGranica >" + str(
-                    result))
-            nazwaChoroby = dict(c.fetchone())['nazwaChoroby']
-            print(nazwaChoroby)
+    c.execute("SELECT zalecenia FROM choroby WHERE choroby.gornaGranica<="+str(result)+" AND choroby.dolnaGranica>="+ str(result))
+    notatka = dict(c.fetchone())['zalecenia']
+    # print(nazwaChoroby)
 
-            c.execute("SELECT zalecenia FROM choroby WHERE gornaGranica <" + str(result) + " AND dolnaGranica >" + str(
-                result))
-            notatka = dict(c.fetchone())['zalecenia']
-            print(notatka)
-            # zwrotka = {'result': True}
-            # return jsonify(zwrotka)
+    c.execute("SELECT nazwaChoroby FROM choroby WHERE choroby.gornaGranica<= "+str(result)+" AND choroby.dolnaGranica>="+str(result))
+    nazwaChoroby = dict(c.fetchone())['nazwaChoroby']
+    # print(notatka)
+    # zwrotka = {'result': True}
+    # return jsonify(zwrotka)
 
-        return render_template('diagnoza.html', choroba=nazwaChoroby, zalecenia=notatka)
+    return render_template('diagnoza.html', choroba=nazwaChoroby, zalecenia=notatka)
+
 
 
 if __name__ == '__main__':
